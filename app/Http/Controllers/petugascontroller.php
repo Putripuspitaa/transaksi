@@ -55,6 +55,7 @@ class petugascontroller extends Controller
         return response()->json(compact('user','token'),201);
     }
 
+    
     public function getAuthenticatedUser()
     {
         try {
