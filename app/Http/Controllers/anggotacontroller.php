@@ -9,6 +9,15 @@ use Validator;
 
 class anggotacontroller extends Controller
 {
+    public function index()
+    {
+        if(Auth::user()->level=="admin"){
+            $dt_anggota=Anggota_model::get();
+            return response()->json($dt_anggota);
+        } else {
+            return response()->json(['status'=>'anda bukan admin']);
+        }
+    }
     public function store(Request $req)
     {
         $validator=Validator::make($req->all(),
